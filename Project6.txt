@@ -1,0 +1,58 @@
+Your environment has been set up for using Node.js 8.11.3 (x64) and npm.
+
+C:\Users\Aditya>ganache-cli
+Ganache CLI v6.1.8 (ganache-core: 2.2.1)
+
+Available Accounts
+==================
+(0) 0x2a4588f9a1ec0bd2d293c8e6d8eb673a50d761cf (~100 ETH)
+(1) 0xdb63f33b778c45563c010476aac8ecd4671e38cc (~100 ETH)
+(2) 0x16baf75c59a5cdd38afaf0509eb2d25e10fdf565 (~100 ETH)
+(3) 0xf276567bb4287f609e8edff1548b5ede07d1aad9 (~100 ETH)
+(4) 0x3eca36bfb0d047027eaeaf62744860733757cf70 (~100 ETH)
+(5) 0x07aa6004aff4afb097b5953f50a79321f81e30d5 (~100 ETH)
+(6) 0xb70054d7880c2b8162eb9ea2b3094bec2a0c9047 (~100 ETH)
+(7) 0x9068258e375da5e14be22b68c04381bfc9dbe141 (~100 ETH)
+(8) 0x0420237b036122de2554b68021d53304e2639988 (~100 ETH)
+(9) 0xa832637c74ced534cdcff2a5cee7fec260f6a94f (~100 ETH)
+
+Private Keys
+==================
+(0) 0x664e452c160543413df3870614771bd006a09d6088542e267dadb7eae26f300f
+(1) 0x1d6e4f40aa42a35dd80dd6e6703c1b63cc5fa9e09190160c3e8e2f54fd20f4ae
+(2) 0x334e1fcc56c1539df345b8737ed0f4e216ed801ef6168d546517c7e5922f9802
+(3) 0xb2d425e2f94d670c2af25c32a15f9964e352b9c759805e7243fc47f1f0ec86a7
+(4) 0xea5227a714b58f756bb57b55e16c2f581b0f82587a22ede24c783684288372a1
+(5) 0x445f6f3859bd35466e4dd3f2e2357a89e99b9b067b32f32580083dcc558ea61f
+(6) 0x2bb30f72e72e4ec0fd569a666461030d57fe2086148cb8867ee3cae30586d454
+(7) 0x63dd2e165aafedfc3f071002db1b98bc7b1832cc628b169423203b6699fd574b
+(8) 0x156be5cb89068e4101db77f8a15e5d930922aabfd84088505b86cd41ceae1f7d
+(9) 0xace466e9d44fb1a32dfcd81846b6fc2e8342e8dcc5987dc03e67c17bca837b7b
+
+HD Wallet
+==================
+Mnemonic:      assume security twice bonus toast decade plate wasp sunset disease logic energy
+Base HD Path:  m/44'/60'/0'/0/{account_index}
+
+Gas Price
+==================
+20000000000
+
+Gas Limit
+==================
+6721975
+
+Listening on 127.0.0.1:8545
+
+truffle test test/TestSupplychain.js
+
+
+
+Commands
+truffle develop or sudo truffle develop to run Truffle Development environment.
+compile to compile any changes in the Smart Contract.
+migrate --reset to migrate and create a fresh and clean Smart contract session.
+test to run the test cases.
+
+
+C:\Swati\BlockChain\Project6>truffle.cmd develop
