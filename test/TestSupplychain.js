@@ -9,19 +9,19 @@ contract('SupplyChain', function(accounts) {
     var sku = 1
     var upc = 1
     const ownerID = accounts[0]
-    const originMinerID = accounts[0]
-    const originMinerName = "John Doe"
-    const diamondColor = "Yarray Valley"
-    const diamondLength = "-38.239770"
-    const diamondWidth = "144.341490"
-    const diamondCarat = ""
+    const originMinerID = accounts[1]
+    const originMinerName = "SA Mine"
+    const diamondColor = "Pink"
+    const diamondLength = "1.00"
+    const diamondWidth = "1.30"
+    const diamondCarat = "22"
     var diamondID = sku + upc
     const diamondNotes = "Best Diamond ever seen"
     const diamondPrice = web3.toWei(1, "ether")
     var itemState = 0
-    const jewellerID = accounts[1]
-    const certifierID = accounts[2]
-    const finalOwnerID = accounts[3]
+    const jewellerID = accounts[2]
+    const certifierID = accounts[3]
+    const finalOwnerID = accounts[4]
     const emptyAddress = '0x00000000000000000000000000000000000000'
 
     ///Available Accounts
@@ -39,17 +39,19 @@ contract('SupplyChain', function(accounts) {
 
     console.log("ganache-cli accounts used here...")
     console.log("Contract Owner: accounts[0] ", accounts[0])
-    console.log("Miner: accounts[0] ", accounts[0])
-    console.log("Jeweller: accounts[1] ", accounts[1])
-    console.log("Certifier: accounts[2] ", accounts[2])
-    console.log("FinalOwnerId: accounts[3] ", accounts[3])
+    console.log("Miner: accounts[1] ", accounts[1])
+    console.log("Jeweller: accounts[2] ", accounts[2])
+    console.log("Certifier: accounts[3] ", accounts[3])
+    console.log("FinalOwnerId: accounts[4] ", accounts[4])
 
     // 1st Test
     it("Testing smart contract function mineDiamond() that allows a miner to mind a diamond", async() => {
         const supplyChain = await SupplyChain.deployed()
 
-       // supplyChain.addMiner(accounts[0]);
-        //supplyChain.addJeweller(accounts[1]);
+        supplyChain.addMiner(accounts[1], {from: accounts[0]});
+        supplyChain.addJeweller(accounts[2], {from: accounts[0]});
+        supplyChain.addCertifier(accounts[3], {from: accounts[0]});
+        supplyChain.addConsumer(accounts[4], {from: accounts[0]});
         
         // Declare and Initialize a variable for event
         var eventEmitted = false
@@ -95,7 +97,7 @@ contract('SupplyChain', function(accounts) {
       
           
         // Mark an item as Processed by calling function processtItem()
-        await supplyChain.putRawDiamondForSale(upc, diamondPrice, {from: accounts[0]})  
+        await supplyChain.putRawDiamondForSale(upc, diamondPrice, {from: accounts[1]})  
             
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -124,7 +126,7 @@ contract('SupplyChain', function(accounts) {
           
 
         // Mark an item as Packed by calling function buyRawDiamond()
-        await supplyChain.buyRawDiamond(upc,{from: accounts[1], value: diamondPrice, gasPrice: 0})
+        await supplyChain.buyRawDiamond(upc,{from: accounts[2], value: diamondPrice, gasPrice: 0})
        
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -155,7 +157,7 @@ contract('SupplyChain', function(accounts) {
         
 
         // Mark an item as Polished by calling function polishDiamond()
-        await supplyChain.polishDiamond(upc, {from: accounts[1]})  
+        await supplyChain.polishDiamond(upc, {from: accounts[2]})  
         
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -183,7 +185,7 @@ contract('SupplyChain', function(accounts) {
         
 
         // Mark an item as certifyDiamond by calling function certifyDiamond()
-        await supplyChain.certifyDiamond(upc, {from: accounts[2]})  
+        await supplyChain.certifyDiamond(upc, {from: accounts[3]})  
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
         const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc)
@@ -210,7 +212,7 @@ contract('SupplyChain', function(accounts) {
         
  
         // Mark an item as forAuction by calling function addDiamondForAuction()        
-        await supplyChain.addDiamondForAuction(upc,diamondPrice, {from: accounts[1]})  
+        await supplyChain.addDiamondForAuction(upc,diamondPrice, {from: accounts[2]})  
               
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -238,7 +240,7 @@ contract('SupplyChain', function(accounts) {
             
       
         // Mark an item as Purchased by calling function purchaseDiamond()
-        await supplyChain.purchaseDiamond(upc, {from: accounts[3], value: diamondPrice, gasPrice: 0}) 
+        await supplyChain.purchaseDiamond(upc, {from: accounts[4], value: diamondPrice, gasPrice: 0}) 
         
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()

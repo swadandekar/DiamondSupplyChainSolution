@@ -168,7 +168,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
-  function putRawDiamondForSale(uint _upc, uint _price) public mined(_upc) onlyOwner 
+  function putRawDiamondForSale(uint _upc, uint _price) public mined(_upc)  onlyMiner()
   // Call modifier to check if upc has passed previous supply chain stage  
   // Call modifier to verify caller of this function  
   {
@@ -183,7 +183,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
   // Define a function 'buyItem' that allows the disributor to mark an item 'Sold'
   // Use the above defined modifiers to check if the item is available for sale, if the buyer has paid enough, 
   // and any excess ether sent is refunded back to the buyer
-  function buyRawDiamond(uint _upc) public payable  forSale(_upc) paidEnough(msg.value)  checkValue(_upc) verifyCaller(msg.sender)
+  function buyRawDiamond(uint _upc) public payable  forSale(_upc) paidEnough(msg.value)  checkValue(_upc) onlyJeweller()
     // Call modifier to check if upc has passed previous supply chain stage    
     // Call modifer to check if buyer has paid enough    
     // Call modifer to send any excess ether back to buyer    
@@ -202,7 +202,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
     }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
-  function polishDiamond(uint _upc) public sold(_upc)
+  function polishDiamond(uint _upc) public sold(_upc) onlyJeweller()
   // Call modifier to check if upc has passed previous supply chain stage  
   // Call modifier to verify caller of this function  
   {
@@ -219,7 +219,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
   // Define a function 'buyItem' that allows the disributor to mark an item 'Sold'
   // Use the above defined modifiers to check if the item is available for sale, if the buyer has paid enough, 
   // and any excess ether sent is refunded back to the buyer
-  function certifyDiamond(uint _upc) public polished(_upc) 
+  function certifyDiamond(uint _upc) public polished(_upc) onlyCertifier() 
   // Call modifier to check if upc has passed previous supply chain stage  
   // Call modifier to verify caller of this function    
     {
@@ -232,7 +232,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
 
   // Define a function 'shipItem' that allows the distributor to mark an item 'Shipped'
   // Use the above modifers to check if the item is sold
-  function addDiamondForAuction(uint _upc, uint _price) public certified(_upc)  
+  function addDiamondForAuction(uint _upc, uint _price) public certified(_upc)  onlyJeweller()
     // Call modifier to check if upc has passed previous supply chain stage    
     // Call modifier to verify caller of this function    
     {
@@ -247,7 +247,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
 
   // Define a function 'receiveItem' that allows the retailer to mark an item 'Received'
   // Use the above modifiers to check if the item is shipped
-  function purchaseDiamond(uint _upc) public payable forAuction(_upc) paidEnough(msg.value)  checkValue(_upc)
+  function purchaseDiamond(uint _upc) public payable forAuction(_upc) paidEnough(msg.value)  checkValue(_upc) onlyConsumer()
     // Call modifier to check if upc has passed previous supply chain stage    
     // Access Control List enforced by calling Smart Contract / DApp
     {
