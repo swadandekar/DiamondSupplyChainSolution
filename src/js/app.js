@@ -96,12 +96,12 @@ App = {
                 console.log('Error:',err);
                 return;
             }
-            console.log('getMetaskID:',res);
+            console.log('getMetaskID1:',res);
             App.metamaskAccountID = res[0];
-            App.jewellerID = res[1];
-            App.certifierID = res[2];
+            //App.jewellerID = res[1];
+            //App.certifierID = res[2];
 
-            console.log('getMetaskID:',App.jewellerID);
+            console.log('getMetaskID jeweller:',App.jewellerID);
 
         })
     },
@@ -213,11 +213,12 @@ App = {
     
     buyRawDiamond: function (event) {
         event.preventDefault();
+        console.log('buyRawDiamond-I am called');
         var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            const walletValue = web3.toWei(3, "ether");            
-            return instance.buyRawDiamond(App.upc, {from: App.jewellerID, value: walletValue});
+            const walletValue = web3.toWei(3, "ether");   
+            return instance.buyRawDiamond(App.upc, {from: App.metamaskAccountID, value: parseInt(1), gasPrice: 0});
         }).then(function(result) {
             $("#ftc-item").text(result);
             console.log('buyRawDiamond',result);
@@ -276,7 +277,7 @@ App = {
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
             const walletValue = web3.toWei(3, "ether");       
-            return instance.purchaseDiamond(App.upc, {from: App.metamaskAccountID,  value: walletValue});
+            return instance.purchaseDiamond(App.upc, {from: App.metamaskAccountID,  value: parseInt(1), gasPrice: 0});
         }).then(function(result) {
             $("#ftc-item").text(result);
             console.log('purchaseDiamond',result);
