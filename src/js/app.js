@@ -98,6 +98,10 @@ App = {
             }
             console.log('getMetaskID:',res);
             App.metamaskAccountID = res[0];
+            App.jewellerID = res[1];
+            App.certifierID = res[2];
+
+            console.log('getMetaskID:',App.jewellerID);
 
         })
     },
@@ -197,6 +201,7 @@ App = {
         App.contracts.SupplyChain.deployed().then(function(instance) {
             const diamondPrice = web3.toWei(1, "ether");
             console.log('productPrice',diamondPrice);
+            console.log('diamondPrice',parseInt(App.diamondPrice));
             return instance.putRawDiamondForSale(App.upc, App.diamondPrice, {from: App.metamaskAccountID});
         }).then(function(result) {
             $("#ftc-item").text(result);
@@ -212,7 +217,7 @@ App = {
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
             const walletValue = web3.toWei(3, "ether");            
-            return instance.buyRawDiamond(App.upc, {from: App.metamaskAccountID, value: walletValue});
+            return instance.buyRawDiamond(App.upc, {from: App.jewellerID, value: walletValue});
         }).then(function(result) {
             $("#ftc-item").text(result);
             console.log('buyRawDiamond',result);
