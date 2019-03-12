@@ -4,9 +4,10 @@ import "../diamondaccesscontrol/CertifierRole.sol";
 import "../diamondaccesscontrol/ConsumerRole.sol";
 import "../diamondaccesscontrol/JewellerRole.sol";
 import "../diamondaccesscontrol/MinerRole.sol";
+import "../diamondcore/Ownable.sol";
 
 
-contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
+contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole, Ownable {
 
   // Define 'owner'
   address owner;
@@ -168,7 +169,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
-  function putRawDiamondForSale(uint _upc, uint _price) public mined(_upc)  onlyMiner()
+  function putRawDiamondForSale(uint _upc, uint _price) public mined(_upc)  onlyMiner() verifyCaller(diamonds[_upc].originMinerID)
   // Call modifier to check if upc has passed previous supply chain stage  
   // Call modifier to verify caller of this function  
   {
@@ -202,7 +203,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
     }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
-  function polishDiamond(uint _upc) public sold(_upc) onlyJeweller()
+  function polishDiamond(uint _upc) public sold(_upc) onlyJeweller() verifyCaller(diamonds[_upc].jewellerID)
   // Call modifier to check if upc has passed previous supply chain stage  
   // Call modifier to verify caller of this function  
   {
@@ -232,7 +233,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole {
 
   // Define a function 'shipItem' that allows the distributor to mark an item 'Shipped'
   // Use the above modifers to check if the item is sold
-  function addDiamondForAuction(uint _upc, uint _price) public certified(_upc)  onlyJeweller()
+  function addDiamondForAuction(uint _upc, uint _price) public certified(_upc)  onlyJeweller() verifyCaller(diamonds[_upc].jewellerID)
     // Call modifier to check if upc has passed previous supply chain stage    
     // Call modifier to verify caller of this function    
     {

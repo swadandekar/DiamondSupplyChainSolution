@@ -48,10 +48,10 @@ contract('SupplyChain', function(accounts) {
     it("Testing smart contract function mineDiamond() that allows a miner to mind a diamond", async() => {
         const supplyChain = await SupplyChain.deployed()
 
-        supplyChain.addMiner(accounts[1], {from: accounts[0]});
-        supplyChain.addJeweller(accounts[2], {from: accounts[0]});
-        supplyChain.addCertifier(accounts[3], {from: accounts[0]});
-        supplyChain.addConsumer(accounts[4], {from: accounts[0]});
+        supplyChain.addMiner(accounts[1], {from: ownerID});
+        supplyChain.addJeweller(accounts[2], {from: ownerID});
+        supplyChain.addCertifier(accounts[3], {from: ownerID});
+        supplyChain.addConsumer(accounts[4], {from: ownerID});
         
         // Declare and Initialize a variable for event
         var eventEmitted = false
@@ -63,7 +63,7 @@ contract('SupplyChain', function(accounts) {
         })
 
         // Mark an item as Harvested by calling function mineDiamond()
-        await supplyChain.mineDiamond(upc,ownerID, originMinerID, originMinerName, diamondColor, diamondLength, diamondWidth, diamondCarat, diamondNotes, {from: accounts[1]})
+        await supplyChain.mineDiamond(upc,ownerID, originMinerID, originMinerName, diamondColor, diamondLength, diamondWidth, diamondCarat, diamondNotes, {from: originMinerID})
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
         const resultBufferOne = await supplyChain.fetchItemBufferOne.call(upc)
@@ -97,7 +97,7 @@ contract('SupplyChain', function(accounts) {
       
           
         // Mark an item as Processed by calling function processtItem()
-        await supplyChain.putRawDiamondForSale(upc, diamondPrice, {from: accounts[1]})  
+        await supplyChain.putRawDiamondForSale(upc, diamondPrice, {from: originMinerID})  
             
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -126,7 +126,7 @@ contract('SupplyChain', function(accounts) {
           
 
         // Mark an item as Packed by calling function buyRawDiamond()
-        await supplyChain.buyRawDiamond(upc,{from: accounts[2], value: diamondPrice, gasPrice: 0})
+        await supplyChain.buyRawDiamond(upc,{from: jewellerID, value: diamondPrice, gasPrice: 0})
        
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -157,7 +157,7 @@ contract('SupplyChain', function(accounts) {
         
 
         // Mark an item as Polished by calling function polishDiamond()
-        await supplyChain.polishDiamond(upc, {from: accounts[2]})  
+        await supplyChain.polishDiamond(upc, {from: jewellerID})  
         
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -185,7 +185,7 @@ contract('SupplyChain', function(accounts) {
         
 
         // Mark an item as certifyDiamond by calling function certifyDiamond()
-        await supplyChain.certifyDiamond(upc, {from: accounts[3]})  
+        await supplyChain.certifyDiamond(upc, {from: certifierID})  
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
         const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc)
@@ -212,7 +212,7 @@ contract('SupplyChain', function(accounts) {
         
  
         // Mark an item as forAuction by calling function addDiamondForAuction()        
-        await supplyChain.addDiamondForAuction(upc,diamondPrice, {from: accounts[2]})  
+        await supplyChain.addDiamondForAuction(upc,diamondPrice, {from: jewellerID})  
               
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
@@ -240,7 +240,7 @@ contract('SupplyChain', function(accounts) {
             
       
         // Mark an item as Purchased by calling function purchaseDiamond()
-        await supplyChain.purchaseDiamond(upc, {from: accounts[4], value: diamondPrice, gasPrice: 0}) 
+        await supplyChain.purchaseDiamond(upc, {from: finalOwnerID, value: diamondPrice, gasPrice: 0}) 
         
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
