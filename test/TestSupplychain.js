@@ -18,6 +18,7 @@ contract('SupplyChain', function(accounts) {
     var diamondID = sku + upc
     const diamondNotes = "Best Diamond ever seen"
     const diamondPrice = web3.toWei(1, "ether")
+    const diamondBuyPrice = web3.toWei(3, "ether")
     var itemState = 0
     const jewellerID = accounts[2]
     const certifierID = accounts[3]
@@ -126,7 +127,7 @@ contract('SupplyChain', function(accounts) {
           
 
         // Mark an item as Packed by calling function buyRawDiamond()
-        await supplyChain.buyRawDiamond(upc,{from: jewellerID, value: diamondPrice, gasPrice: 0})
+        await supplyChain.buyRawDiamond(upc,{from: jewellerID, value: diamondBuyPrice, gasPrice: 0})
        
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()

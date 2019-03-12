@@ -195,7 +195,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole, O
       diamonds[_upc].jewellerID = msg.sender;
      
       // Transfer money to farmer
-      diamonds[_upc].originMinerID.transfer(msg.value);
+      diamonds[_upc].originMinerID.transfer(diamonds[_upc].diamondPrice);
     
       // emit the appropriate event
       emit Sold(_upc);
@@ -257,7 +257,7 @@ contract SupplyChain  is CertifierRole, ConsumerRole, JewellerRole, MinerRole, O
     diamonds[_upc].ownerID = msg.sender;
     diamonds[_upc].finalOwnerID = msg.sender;
 
-    diamonds[_upc].jewellerID.transfer(msg.value);
+    diamonds[_upc].jewellerID.transfer(diamonds[_upc].diamondPrice);
 
     // Emit the appropriate event
     emit Purchased(_upc);
