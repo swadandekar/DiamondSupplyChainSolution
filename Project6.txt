@@ -94,4 +94,59 @@ Mnemonic: candy maple cake sugar pudding cream honey rich smooth crumble sweet t
 Ensure you do not use it on production blockchains, or else you risk losing funds.
 
 
+truffle migrate --reset --network rinkeby
+
+
+C:\Swati\BlockChain\Project6>ganache-cli
+Ganache CLI v6.1.8 (ganache-core: 2.2.1)
+
+Available Accounts
+==================
+(0) 0xfc46844902945a637b08d90d3e9e88f7cc7071b0 (~100 ETH)
+(1) 0xbd1017af89b0309511735c1fad54d6bceba4f603 (~100 ETH)
+(2) 0x08487684ca25a3fa4ecbf60b4f6639b5363f16ac (~100 ETH)
+(3) 0xf72656439bab70fbdc091641fd994b6965628ce7 (~100 ETH)
+(4) 0x1b9f21cdbbd01dd8c44462d141eaa0fe7c8eef44 (~100 ETH)
+(5) 0x8ca1c6ae58b0823ca2beee78b3942c113075d2d5 (~100 ETH)
+(6) 0x660eeb3edb8eb4ad62061e5ac2dfbd13c9877d62 (~100 ETH)
+(7) 0xc8f19f5a6d810b058efd52f090226ccc056660b8 (~100 ETH)
+(8) 0x6cd08108c2d12904c72462b739438ff354497768 (~100 ETH)
+(9) 0x30f95bf37ed7be97ec070f76757b442ff82b1c6c (~100 ETH)
+
+Private Keys
+==================
+(0) 0x3cad2b39fb08b4c0d2512333e471b6e6decd68e48be5a298afd7872a275054d1
+(1) 0x015e21d70e9752615908e7401a703af723c47aec7fb6e9361fe30c736e90e99b
+(2) 0xfc8143813b7ca56a244587c421e14e4f50a61069b24ca6a8d37a729f8cc0f3f6
+(3) 0x2504e5469c3d7e5becb1df213facfddd7eb888650a5cf0e7dd6a2535f47e1787
+(4) 0x805735fa0e4be751271cf090489fde6f178f28476456491c7fd6fdb64a4f3c56
+(5) 0x8654fa0262663b84e8cd3d6b1330e5e765098a9817423607b48c1126a6107543
+(6) 0xbd81e4027a1e56fc048ceccc4233e532ef70c12e577d57c3c3d856b567d7eb5b
+(7) 0x3a67628d14c5d1fd2a68b7290611b1bf19b88f341b0f83ded16638238ec0d08d
+(8) 0x4fa95294bc07eb64aec2b2cc28f5c5795df0d7478fc2df619ac794aedd4ff178
+(9) 0xb9e2e56aa3704d927e57a71cbe859c2fc84be3c36ac74b0a134dba4a92d21718
+
+HD Wallet
+==================
+Mnemonic:      either worry increase noise toddler bamboo essay patch person defense lizard auction
+Base HD Path:  m/44'/60'/0'/0/{account_index}
+
+
+truffle(develop)> migrate --reset --network rinkeby
+Using network 'rinkeby'.
+
+Running migration: 1_initial_migration.js
+  Deploying Migrations...
+  ... 0xd847f9f27b172ffebf6d615b5cf08add9fd646c2c771372ffe45fc5d0c401ad9
+  Migrations: 0x09c9e41f6c8452a35e1cd5c4b8680cfc6721f031
+Saving successful migration to network...
+  ... 0xae74c3df23ffe35cecd75cb83a0f79be17f9c40995d1869b88a63280969b3836
+Saving artifacts...
+Running migration: 2_deploy_contracts.js
+  Deploying SupplyChain...
+  ... 0x870215cb8d989a193618751c7aaf5469be99a1480f819db20d5b5bd579574677
+  SupplyChain: 0x3bec5c22d281123c65d3a10e0d942f2dac545df6
+Saving successful migration to network...
+  ... 0x4b6b489b2835a239a0a001b8bfd06ab24c1c223e792f7a6f033ee3e3e41adc6d
+Saving artifacts...
 
