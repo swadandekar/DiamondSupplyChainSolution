@@ -1,5 +1,5 @@
-DiamondSupplyChain
-Architect a Blockchain based Diamond Supply Chain Solution
+# DiamondSupplyChain
+Architect a Blockchain based Supply Chain Solution
 
 Summary: This is an example of Diamond Supply chain which demonstrates various stages a diamond goes through till it reaches the stage where it can be sold.
 
@@ -7,7 +7,7 @@ Story: It starts with mining rough diamond. Jeweller buys the rough diamond from
 
 Asset: Diamond
 
-Actors: Supplier, Jeweller,Certifier/Regulator, buyer
+Actors: Supplier, Jweller,inspector/Regulator, buyer
 
 states: Mined, Sold, Polished, Certified, auctioned, purchased
 
