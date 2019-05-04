@@ -15,7 +15,8 @@ Actors: Supplier, Jweller,inspector/Regulator, buyer
 
 States: Mined, Sold,  Polished, Certified, auctioned, purchased
 
-### Skills: Solidity, Ethereum, Node.js, Web3.js, CSS3, HTML, Javascript
+### Skills: 
+Solidity, Ethereum, Node.js, Web3.js, CSS3, HTML, Javascript
 
 ### Version Info 
 
