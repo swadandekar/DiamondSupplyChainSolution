@@ -11,9 +11,9 @@ On certification, diamond is auctioned and sold to the customer.
 
 Asset: Diamond
 
-Actors: Supplier, Jeweller,inspector/Regulator, buyer
+Actors: Supplier, Jeweller, inspector/Regulator, Buyer
 
-States: Mined, Sold,  Polished, Certified, auctioned, purchased
+States: Mined, Sold, Polished, Certified, Auctioned, Purchased
 
 ### Skills: 
 Solidity, Ethereum, Node.js, Web3.js, CSS3, HTML, Javascript
