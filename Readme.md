@@ -17,11 +17,11 @@ States: Mined, Sold,  Polished, Certified, auctioned, purchased
 
 ### Skills: Solidity, Ethereum, Node.js, Web3.js, CSS3, HTML, Javascript
 
-Versions: 
+### Version Info 
 
-Truffle version Truffle v4.1.14
-Node version v8.11.3
-web3 version 1.0.0-beta.48
+Truffle v4.1.14
+Node v8.11.3
+web3 1.0.0-beta.48
 
 ## Deployment Details : 
 
