@@ -1,4 +1,4 @@
-# DiamondSupplyChain
+# Diamond Supply Chain
 Architect a Blockchain based Supply Chain Solution
 
 ### Summary: 
