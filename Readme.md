@@ -2,7 +2,10 @@
 Architect a Blockchain based Supply Chain Solution
 
 ### Summary: 
-This is a DApp supply chain solution. It has smart contracts that manage specific user permission controls as well as other contracts that track. Also it verifes a product’s authenticity and facilitate the Traceability of a product.It demonstrates various stages a diamond goes through till it reaches the stage where it can be sold.
+This is a decentralized blockchain based supply chain solution. 
+Access control enabled smart contract to manage specific user permission controls
+Tracks and verifies a product’s authenticity and facilitate the traceability of a product.
+Demonstrates various stages a diamond goes through till it reaches the stage where it can be sold.
 
 ### Story:
 It starts with mining rough diamond. Jeweller buys the rough diamond from supplier and then it undergoes stages as cutting, brutting, polishing which are processed by the jeweller.
